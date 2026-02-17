@@ -60,10 +60,11 @@ export default function Home() {
   await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "https://smart-bookmark-app-gold-chi.vercel.app"
-    }
+      redirectTo: window.location.origin,
+    },
   })
 }
+
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
