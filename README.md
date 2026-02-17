@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Smart Bookmark Manager
 
-## Getting Started
+A full-stack bookmark management application built using Next.js (App Router), Supabase, and Tailwind CSS.
 
-First, run the development server:
+This app allows users to securely log in using Google OAuth, manage their personal bookmarks, and experience real-time updates across multiple tabs.
 
-```bash
+🌍 Live Demo
+
+🔗 Live URL:
+https://smart-bookmark-app-gold-chi.vercel.app
+
+📂 GitHub Repository:
+https://github.com/raghavendra-54/smart-bookmark-app
+
+🛠 Tech Stack
+
+Frontend: Next.js 16 (App Router)
+
+Backend & Auth: Supabase
+
+Database: PostgreSQL (Supabase)
+
+Authentication: Google OAuth (No email/password)
+
+Realtime: Supabase Realtime Subscriptions
+
+Styling: Tailwind CSS
+
+Deployment: Vercel
+
+Version Control: Git & GitHub
+
+✨ Features
+
+✅ Google OAuth Login
+✅ Private bookmarks per user (Row Level Security enabled)
+✅ Add bookmarks (Title + URL)
+✅ Delete own bookmarks
+✅ Real-time updates across tabs
+✅ Secure database access
+✅ Production deployment on Vercel
+
+🔐 Security Implementation
+
+Enabled Row Level Security (RLS) in Supabase
+
+Created policies to ensure:
+
+Users can only view their own bookmarks
+
+Users can only insert their own records
+
+Users can only delete their own bookmarks
+
+All queries are authenticated using Supabase session
+
+⚡ Realtime Implementation
+
+Used Supabase Realtime subscriptions to listen for:
+
+INSERT
+
+DELETE
+
+This allows bookmark list to update instantly across multiple open tabs without page refresh.
+
+📦 Database Schema
+
+Table: bookmarks
+
+Column	Type	Description
+id	uuid	Primary Key
+user_id	uuid	Authenticated User ID
+title	text	Bookmark title
+url	text	Bookmark URL
+created_at	timestamp	Created time
+🚧 Challenges Faced
+1️⃣ OAuth Redirect Issue in Production
+
+Problem: Google login was redirecting to localhost after deployment.
+Solution:
+
+Added Vercel production URL to Supabase Authentication → Redirect URLs
+
+Updated Site URL in Supabase settings
+
+2️⃣ Row Level Security Blocking Queries
+
+Problem: Data was not inserting or selecting.
+Solution:
+
+Enabled RLS
+
+Created proper SELECT, INSERT, DELETE policies based on auth.uid()
+
+3️⃣ Realtime Not Updating Across Tabs
+
+Problem: Bookmarks were only visible after refresh.
+Solution:
+
+Implemented Supabase channel subscription
+
+Refetched data on change events
+
+4️⃣ Git & Deployment Errors
+
+Problem: Merge conflicts and push rejection.
+Solution:
+
+Resolved conflict markers manually
+
+Used git pull origin main --rebase
+
+Rebuilt and redeployed on Vercel
+
+📥 Installation & Setup
+1️⃣ Clone Repository
+git clone https://github.com/raghavendra-54/smart-bookmark-app.git
+cd smart-bookmark-app
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Create .env.local file
+NEXT_PUBLIC_SUPABASE_URL=your_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+
+4️⃣ Run Locally
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+App runs on:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+http://localhost:3000
 
-## Learn More
+🎯 Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+Dark mode toggle
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Bookmark categories
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Edit bookmark feature
 
-## Deploy on Vercel
+Search functionality
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Bookmark favicon preview
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+AI-based bookmark tagging
+
+👨‍💻 Author
+
+Raghavendra
+Full Stack Developer (Aspiring)
+
+🏆 Project Purpose
+
+This project was built as part of a Fullstack/GenAI internship screening task to demonstrate:
+
+Authentication implementation
+
+Secure database design
+
+Real-time systems
+
+Production deployment
+
+Problem-solving ability
+
+🔥 Built with dedication, debugging patience, and continuous learning.
