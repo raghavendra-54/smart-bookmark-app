@@ -64,10 +64,6 @@ export default function Home() {
     }
   })
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 6a200a3 (Fix production OAuth redirect)
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
